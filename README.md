@@ -161,6 +161,8 @@ Flujo de `step()`:
 | POST | `/api/v1/simulations/{id}/reset` | Vuelve al inicio |
 | GET | `/api/v1/health` | Estado del servicio |
 
-## Despliegue
+## Despliegue en Render
 
-Ver [DEPLOY_RENDER.md](../DEPLOY_RENDER.md) en la raíz del proyecto.
+1. https://dashboard.render.com → **New** → **Blueprint** o **Web Service** → repo **Maquina-Turing-Back**
+2. Usa `render.yaml` del repo o Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+3. Variable `CORS_ORIGINS` = URL del Static Site del frontend (sin `/` al final)
