@@ -1,0 +1,16 @@
+{
+  "id": "infinite_loop",
+  "name": "Bucle infinito (prueba)",
+  "description": "Máquina de prueba que nunca detiene para validar límite de pasos",
+  "states": ["q0"],
+  "input_alphabet": ["a"],
+  "tape_alphabet": ["a", "_"],
+  "blank": "_",
+  "initial_state": "q0",
+  "accept_states": [],
+  "reject_states": [],
+  "transitions": [
+    {"from": "q0", "read": "a", "to": "q0", "write": "a", "move": "R"},
+    {"from": "q0", "read": "_", "to": "q0", "write": "_", "move": "L"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "unary_increment",
+  "name": "Incremento unario",
+  "description": "Entrada $1^n$ produce $1^{n+1}$ en la cinta",
+  "states": ["q0", "q1", "q_accept", "q_reject"],
+  "input_alphabet": ["1"],
+  "tape_alphabet": ["1", "_"],
+  "blank": "_",
+  "initial_state": "q0",
+  "accept_states": ["q_accept"],
+  "reject_states": ["q_reject"],
+  "transitions": [
+    {"from": "q0", "read": "1", "to": "q0", "write": "1", "move": "R"},
+    {"from": "q0", "read": "_", "to": "q1", "write": "1", "move": "L"},
+    {"from": "q1", "read": "1", "to": "q_accept", "write": "1", "move": "R"},
+    {"from": "q1", "read": "_", "to": "q_reject", "write": "_", "move": "R"}
+  ]
+}

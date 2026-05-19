@@ -1,0 +1,20 @@
+{
+  "id": "even_zeros",
+  "name": "Paridad de ceros",
+  "description": "Acepta cadenas sobre $\\{0,1\\}$ con cantidad par de símbolos $0$",
+  "states": ["q0", "q1", "q_accept", "q_reject"],
+  "input_alphabet": ["0", "1"],
+  "tape_alphabet": ["0", "1", "_"],
+  "blank": "_",
+  "initial_state": "q0",
+  "accept_states": ["q_accept"],
+  "reject_states": ["q_reject"],
+  "transitions": [
+    {"from": "q0", "read": "0", "to": "q1", "write": "0", "move": "R"},
+    {"from": "q0", "read": "1", "to": "q0", "write": "1", "move": "R"},
+    {"from": "q0", "read": "_", "to": "q_accept", "write": "_", "move": "R"},
+    {"from": "q1", "read": "0", "to": "q0", "write": "0", "move": "R"},
+    {"from": "q1", "read": "1", "to": "q1", "write": "1", "move": "R"},
+    {"from": "q1", "read": "_", "to": "q_reject", "write": "_", "move": "R"}
+  ]
+}

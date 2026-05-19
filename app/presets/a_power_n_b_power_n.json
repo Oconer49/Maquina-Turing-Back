@@ -1,0 +1,32 @@
+{
+  "id": "a_power_n_b_power_n",
+  "name": "Lenguaje a^n b^n",
+  "description": "Acepta el lenguaje $\\{ a^n b^n \\mid n \\geq 1 \\}$",
+  "states": ["q0", "q1", "q2", "q3", "q_accept", "q_reject"],
+  "input_alphabet": ["a", "b"],
+  "tape_alphabet": ["a", "b", "X", "Y", "_"],
+  "blank": "_",
+  "initial_state": "q0",
+  "accept_states": ["q_accept"],
+  "reject_states": ["q_reject"],
+  "transitions": [
+    {"from": "q0", "read": "a", "to": "q1", "write": "X", "move": "R"},
+    {"from": "q0", "read": "b", "to": "q_reject", "write": "b", "move": "R"},
+    {"from": "q0", "read": "_", "to": "q_reject", "write": "_", "move": "R"},
+    {"from": "q1", "read": "a", "to": "q1", "write": "a", "move": "R"},
+    {"from": "q1", "read": "X", "to": "q1", "write": "X", "move": "R"},
+    {"from": "q1", "read": "Y", "to": "q1", "write": "Y", "move": "R"},
+    {"from": "q1", "read": "b", "to": "q2", "write": "Y", "move": "L"},
+    {"from": "q1", "read": "_", "to": "q_reject", "write": "_", "move": "R"},
+    {"from": "q2", "read": "a", "to": "q2", "write": "a", "move": "L"},
+    {"from": "q2", "read": "b", "to": "q2", "write": "b", "move": "L"},
+    {"from": "q2", "read": "Y", "to": "q2", "write": "Y", "move": "L"},
+    {"from": "q2", "read": "X", "to": "q0", "write": "X", "move": "R"},
+    {"from": "q2", "read": "_", "to": "q_reject", "write": "_", "move": "R"},
+    {"from": "q0", "read": "X", "to": "q3", "write": "X", "move": "R"},
+    {"from": "q0", "read": "Y", "to": "q3", "write": "Y", "move": "R"},
+    {"from": "q3", "read": "X", "to": "q3", "write": "X", "move": "R"},
+    {"from": "q3", "read": "Y", "to": "q3", "write": "Y", "move": "R"},
+    {"from": "q3", "read": "_", "to": "q_accept", "write": "_", "move": "R"}
+  ]
+}
