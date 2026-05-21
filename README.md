@@ -2,6 +2,8 @@
 
 API REST en **FastAPI** que ejecuta máquinas de Turing deterministas de una cinta. El frontend consume estos endpoints para mostrar la cinta, los pasos y la tabla δ.
 
+**Documentación completa:** [DOCUMENTACION_TECNICA.md](../DOCUMENTACION_TECNICA.md) — secciones 15 (implementación backend), 16 (API REST), 18 (presets), 20 (tests) y 24 (despliegue).
+
 ## Requisitos
 
 | Herramienta | Versión |

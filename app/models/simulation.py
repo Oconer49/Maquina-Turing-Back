@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from app.models.machine import Transition, TuringMachineConfig
+from app.models.machine import MachineExample, Transition, TuringMachineConfig
 
 
 class TapeCell(BaseModel):
@@ -51,3 +51,4 @@ class MachineSummary(BaseModel):
     id: str
     name: str
     description: str
+    examples: list[MachineExample] = []

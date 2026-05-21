@@ -28,8 +28,19 @@ class Tape:
         else:
             raise ValueError(f"Dirección inválida: {direction}")
 
-    def window(self, radius: int = 12) -> list[dict]:
-        """Recorta un tramo de cinta alrededor de la cabeza para enviar al frontend."""
-        lo = self.head - radius
-        hi = self.head + radius
+    def window(self, blank_pad: int = 2, view_radius: int = 14) -> list[dict]:
+        """Ventana visible: contenido útil acotado alrededor del cabezal."""
+        significant: set[int] = {self.head}
+        for idx, sym in self.cells.items():
+            if sym != self.blank:
+                significant.add(idx)
+
+        lo = min(significant) - blank_pad
+        hi = max(significant) + blank_pad
+
+        view_lo = self.head - view_radius
+        view_hi = self.head + view_radius
+        lo = max(lo, view_lo)
+        hi = min(hi, view_hi)
+
         return [{"index": i, "symbol": self.cells[i]} for i in range(lo, hi + 1)]

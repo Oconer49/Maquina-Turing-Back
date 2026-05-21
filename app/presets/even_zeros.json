@@ -2,6 +2,13 @@
   "id": "even_zeros",
   "name": "Paridad de ceros",
   "description": "Acepta cadenas sobre $\\{0,1\\}$ con cantidad par de símbolos $0$",
+  "examples": [
+    {"input": "", "label": "ε: 0 ceros → acepta"},
+    {"input": "0000", "label": "Cuatro ceros (par) → acepta"},
+    {"input": "1010", "label": "Dos ceros (par) → acepta"},
+    {"input": "101010", "label": "Tres ceros (impar) → rechaza"},
+    {"input": "1111", "label": "Sin ceros (par) → acepta"}
+  ],
   "states": ["q0", "q1", "q_accept", "q_reject"],
   "input_alphabet": ["0", "1"],
   "tape_alphabet": ["0", "1", "_"],

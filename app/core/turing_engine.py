@@ -1,4 +1,4 @@
-from app.config import TAPE_WINDOW_RADIUS
+from app.config import TAPE_BLANK_PAD, TAPE_VIEW_RADIUS
 from app.core.result_explainer import explain_result
 from app.core.tape import Tape
 from app.models.machine import Transition, TuringMachineConfig
@@ -67,7 +67,7 @@ class TuringEngine:
             step=self.step_count,
             current_state=self.current_state,
             head_index=self.tape.head,
-            tape=[TapeCell(**c) for c in self.tape.window(TAPE_WINDOW_RADIUS)],
+            tape=[TapeCell(**c) for c in self.tape.window(TAPE_BLANK_PAD, TAPE_VIEW_RADIUS)],
             status=self.status,
             machine_id=self.machine_id,
             applied_transition=applied,

@@ -2,6 +2,13 @@
   "id": "infinite_loop",
   "name": "Bucle infinito (prueba)",
   "description": "Máquina de prueba que nunca detiene para validar límite de pasos",
+  "examples": [
+    {"input": "a", "label": "Una a → no detiene (límite de pasos)"},
+    {"input": "aa", "label": "Dos a → prueba con cadena corta"},
+    {"input": "aaa", "label": "Tres a → ejecutar automático y pausar"},
+    {"input": "aaaa", "label": "Cuatro a → útil para medir velocidad"},
+    {"input": "aaaaa", "label": "Cinco a → demostración de bucle"}
+  ],
   "states": ["q0"],
   "input_alphabet": ["a"],
   "tape_alphabet": ["a", "_"],

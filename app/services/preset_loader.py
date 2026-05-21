@@ -35,7 +35,12 @@ class PresetLoader:
     def list_summaries(cls) -> list[dict]:
         """Lista id, nombre y descripción para el selector del frontend."""
         return [
-            {"id": m.id, "name": m.name, "description": m.description}
+            {
+                "id": m.id,
+                "name": m.name,
+                "description": m.description,
+                "examples": [e.model_dump() for e in m.examples],
+            }
             for m in cls._load_all().values()
         ]
 

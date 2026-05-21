@@ -1,7 +1,15 @@
 {
   "id": "a_power_n_b_power_n",
-  "name": "Lenguaje a^n b^n",
+  "name": "Lenguaje $a^{n}b^{n}$",
   "description": "Acepta el lenguaje $\\{ a^n b^n \\mid n \\geq 1 \\}$",
+  "examples": [
+    {"input": "ab", "label": "n=1: una a y una b → acepta"},
+    {"input": "aabb", "label": "n=2: aa bb → acepta"},
+    {"input": "aaabbb", "label": "n=3: aaa bbb → acepta"},
+    {"input": "abb", "label": "Solo una a → rechaza"},
+    {"input": "aab", "label": "b antes de terminar las a → rechaza"},
+    {"input": "ababa", "label": "a después de b (mezcla) → rechaza"}
+  ],
   "states": ["q0", "q1", "q2", "q3", "q_accept", "q_reject"],
   "input_alphabet": ["a", "b"],
   "tape_alphabet": ["a", "b", "X", "Y", "_"],

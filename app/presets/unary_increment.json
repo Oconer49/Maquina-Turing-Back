@@ -2,6 +2,13 @@
   "id": "unary_increment",
   "name": "Incremento unario",
   "description": "Entrada $1^n$ produce $1^{n+1}$ en la cinta",
+  "examples": [
+    {"input": "1", "label": "Un solo 1 → acepta (incrementa a 11)"},
+    {"input": "111", "label": "Tres unos → acepta"},
+    {"input": "11111", "label": "Cinco unos → acepta"},
+    {"input": "", "label": "ε → rechaza (se necesita al menos un 1)"},
+    {"input": "11", "label": "Dos unos → acepta; observe la cinta al finalizar"}
+  ],
   "states": ["q0", "q1", "q_accept", "q_reject"],
   "input_alphabet": ["1"],
   "tape_alphabet": ["1", "_"],
