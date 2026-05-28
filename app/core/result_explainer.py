@@ -116,7 +116,7 @@ def _palindrome_accept(inp: str) -> str:
             "Revise la ejecución si esperaba un rechazo."
         )
     return (
-        f"Por qué sí: ${inp}$ es palíndromo sobre $\\{{0,1\\}}$. "
+        f"Por qué sí: ${inp}$ es palíndromo sobre $\\Sigma^*$. "
         f"Al comparar posiciones simétricas (extremo izquierdo con derecho, luego hacia el centro), "
         f"todos los pares coinciden; por ejemplo ${inp[0]}$ con ${inp[-1]}$"
         f"{f' y ${inp[1]}$ con ${inp[-2]}$' if len(inp) > 3 else ''}. "
@@ -127,7 +127,7 @@ def _palindrome_accept(inp: str) -> str:
 def _palindrome_reject(inp: str) -> str:
     if not inp:
         return (
-            "Por qué no: $\\varepsilon$ es palíndromo en $\\{0,1\\}^*$; "
+            "Por qué no: $\\varepsilon$ es palíndromo en $\\Sigma^*$; "
             "si fue rechazada, revise la configuración o la traza de la máquina."
         )
 

@@ -4,6 +4,7 @@ from app.core.turing_engine import TuringEngine
 from app.core.validator import MachineValidator
 from app.models.machine import TuringMachineConfig
 from app.services.preset_loader import PresetLoader
+from app.services.machine_materializer import materialize_machine
 
 
 @pytest.fixture
@@ -13,6 +14,7 @@ def engine_factory():
     def _factory(machine_id: str, input_string: str) -> TuringEngine:
         config = PresetLoader.get(machine_id)
         assert config is not None
+        config = materialize_machine(config, machine_id, input_string)
         MachineValidator.validate_machine(config)
         MachineValidator.validate_input(config, input_string)
         return TuringEngine(config, input_string, machine_id=machine_id)

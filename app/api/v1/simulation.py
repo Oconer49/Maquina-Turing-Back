@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 
 from app.config import HISTORY_LIMIT, MAX_STEPS_DEFAULT
 from app.core.turing_engine import SimulationStatus, TuringEngine
@@ -12,6 +12,7 @@ from app.models.simulation import (
     SimulationSnapshot,
 )
 from app.services.preset_loader import PresetLoader
+from app.services.machine_materializer import materialize_machine
 from app.services.simulation_store import simulation_store
 
 router = APIRouter()
@@ -54,11 +55,13 @@ def list_machines() -> list[MachineSummary]:
 
 
 @router.get("/machines/{machine_id}", response_model=TuringMachineConfig)
-def get_machine(machine_id: str) -> TuringMachineConfig:
+def get_machine(machine_id: str, input: str | None = Query(default=None)) -> TuringMachineConfig:
     """GET /machines/{id} — definición completa con δ."""
     config = PresetLoader.get(machine_id)
     if config is None:
         raise HTTPException(status_code=404, detail="Máquina no encontrada")
+    if input is not None:
+        return materialize_machine(config, machine_id, input)
     return config
 
 
@@ -67,6 +70,7 @@ def create_simulation(body: CreateSimulationRequest) -> SimulationSnapshot:
     """POST /simulations — crea sesión y devuelve snapshot inicial."""
     try:
         config, machine_id = _resolve_machine(body)
+        config = materialize_machine(config, machine_id, body.input)
         MachineValidator.validate_machine(config)
         MachineValidator.validate_input(config, body.input)
     except ValidationError as e:

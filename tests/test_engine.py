@@ -54,6 +54,14 @@ def test_palindrome_accepts_single_0(engine_factory):
     assert final.status == SimulationStatus.ACCEPTED
 
 
+def test_palindrome_materializes_many_symbols_without_duplicate_q4(engine_factory):
+    engine = engine_factory("binary_palindrome", "babahfwfdw")
+    assert engine.config.initial_state == "q0"
+    assert "q5" in engine.config.states
+    keys = {(t.from_state, t.read) for t in engine.config.transitions}
+    assert len(keys) == len(engine.config.transitions)
+
+
 def test_anbn_accepts_ab(engine_factory):
     engine = engine_factory("a_power_n_b_power_n", "ab")
     _, final = engine.run(5000)

@@ -1,13 +1,13 @@
 {
   "id": "binary_palindrome",
-  "name": "Palíndromo binario",
-  "description": "Acepta palíndromos sobre el alfabeto $\\{0,1\\}$",
+  "name": "Palíndromo (alfabeto libre)",
+  "description": "Acepta palíndromos sobre el alfabeto Σ definido por los símbolos de la entrada",
   "examples": [
     {"input": "", "label": "ε → acepta (palíndromo)"},
-    {"input": "0", "label": "Un símbolo → acepta"},
-    {"input": "10101", "label": "Palíndromo impar → acepta"},
-    {"input": "1001", "label": "Palíndromo par → acepta"},
-    {"input": "10100", "label": "No es palíndromo → rechaza"}
+    {"input": "a", "label": "Un símbolo → acepta"},
+    {"input": "abba", "label": "Palíndromo par → acepta"},
+    {"input": "radar", "label": "Palíndromo impar → acepta"},
+    {"input": "abca", "label": "No es palíndromo → rechaza"}
   ],
   "states": ["q0", "q1", "q2", "q3a", "q3b", "q4", "q_accept", "q_reject"],
   "input_alphabet": ["0", "1"],
