@@ -54,7 +54,8 @@ def materialize_machine(config: TuringMachineConfig, machine_id: str, input_stri
     for s in sigma:
         transitions.append(Transition.model_validate({"from": "q0", "read": s, "to": scan_states[s], "write": marker, "move": "R"}))
     transitions.append(Transition.model_validate({"from": "q0", "read": marker, "to": "q0", "write": marker, "move": "R"}))
-    transitions.append(Transition.model_validate({"from": "q0", "read": blank, "to": "q_accept", "write": blank, "move": "R"}))
+    # Al aceptar, dejamos el cabezal sobre el último símbolo útil (evita que termine "en el vacío").
+    transitions.append(Transition.model_validate({"from": "q0", "read": blank, "to": "q_accept", "write": blank, "move": "L"}))
 
     # q1, q2, …: ir hasta el blanco al final (un estado por símbolo de Σ).
     for s in sigma:

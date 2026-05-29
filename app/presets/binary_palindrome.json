@@ -20,7 +20,7 @@
     {"from": "q0", "read": "0", "to": "q1", "write": "X", "move": "R"},
     {"from": "q0", "read": "1", "to": "q2", "write": "X", "move": "R"},
     {"from": "q0", "read": "X", "to": "q0", "write": "X", "move": "R"},
-    {"from": "q0", "read": "_", "to": "q_accept", "write": "_", "move": "R"},
+    {"from": "q0", "read": "_", "to": "q_accept", "write": "_", "move": "L"},
     {"from": "q1", "read": "0", "to": "q1", "write": "0", "move": "R"},
     {"from": "q1", "read": "1", "to": "q1", "write": "1", "move": "R"},
     {"from": "q1", "read": "X", "to": "q1", "write": "X", "move": "R"},
